@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Login Page</title>
+    <link rel="stylesheet" href="/staticFiles/sitestyle.css">
+  </head>
+  <body>
+    <div class="header">
+        <!-- All other pages on site, accessed via top toolbar -->
+        <nav>
+            <a href="{{ url_for('home_page') }}"><img src="/staticFiles/home-icon.png" alt="Home" draggable="false"></a>
+            <a href="{{ url_for('about_page') }}"><img src="/staticFiles/about-icon.png" alt="About" draggable="false"></a>
+            <a href="{{ url_for('login_page') }}"><img src="/staticFiles/login-icon.png" alt="Login" draggable="false"></a>
+        </nav>
+      <h2>Jake's Awesome Login Page!</h2>
+    </div>
+    <div class="color_frame">
+        <div class="text_box">
+            <!-- If there is a message, this appears above the form -->
+            {% if message %}
+                <h5 class="message">{{ message }}</h5>
+            {% endif %}
+            <!-- Form allowing for username and password, used by Javascript at bottom -->
+            <form action="{{ url_for('login_page') }}" method="POST">
+		{{ csrf_token() }}
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password">
+                <input type="submit" value="Login">
+              </form>
+              <a href="{{ url_for('register_page') }}">Don't have an account?</a>
+        </div>
+    </div>
+    <!-- On submit text appears at top. An actual login is not possible. -->
+    <script>
+        function showMessage(event) 
+        {
+            event.preventDefault();
+            const message = document.getElementById("message");
+            message.innerText = "Why would you have to sign in?";
+        }
+      </script>
+    <pre>
+        <a href="https://www.flaticon.com/free-icons/home" title="home icons">Home icons created by Freepik - Flaticon</a>
+        <a href="https://www.flaticon.com/free-icons/info" title="info icons">Info icons created by Roundicons - Flaticon</a>
+        <a href="https://www.flaticon.com/free-icons/login" title="login icons">Login icons created by Freepik - Flaticon</a>
+    </pre>
+  </body>
+</html>

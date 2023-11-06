@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Jake's Super Cool Website</title>
+    <link rel="stylesheet" href="/staticFiles/sitestyle.css">
+    </head>
+    <body>
+        <div class="header">
+            <!-- All other pages on site, accessed via top toolbar -->
+            <nav>
+                <a href="{{ url_for('home_page') }}"><img src="/staticFiles/home-icon.png" alt="Home" draggable="false"></a>
+                <a href="{{ url_for('about_page') }}"><img src="/staticFiles/about-icon.png" alt="About" draggable="false"></a>
+                <a href="{{ url_for('login_page') }}"><img src="/staticFiles/login-icon.png" alt="Login" draggable="false"></a>
+            </nav>
+            <h3>Welcome to Your Exceptional Account!</h3>
+        </div>
+        <div class="color_frame">
+            <div class="text_box">
+
+                <!-- Allows the user to update your password -->
+                <a href="{{ url_for('update_password_page') }}">Need to update your password?</a>
+
+                <!-- A table showing all available payment plans and features -->
+                <table>
+                    <caption class="tabletop">Our Payment Plans!</caption>
+                    <thead>
+                      <tr>
+                          <th scope="col">Plan Type</th>
+                          <th scope="col">Account Data Saved?</th>
+                          <th scope="col">Access to Secret Pages?</th>
+                          <th scope="col">Boost Your Credit?</th>
+                      </tr>
+                    </thead>
+                  
+                    <tbody>
+                      <tr>
+                          <th scope="row">Free!</th>
+                          <td><img class="icon" src="/staticFiles/cross.png" alt="No" draggable="false"></td>
+                          <td><img class="icon" src="/staticFiles/cross.png" alt="No" draggable="false"></td>
+                          <td><img class="icon" src="/staticFiles/cross.png" alt="No" draggable="false"></td>
+                      </tr>
+                      <tr>
+                          <th scope="row">Budget!</th>
+                          <td><img class="icon" src="/staticFiles/check.png" alt="Yes!" draggable="false"></td>
+                          <td><img class="icon" src="/staticFiles/cross.png" alt="No" draggable="false"></td>
+                          <td><img class="icon" src="/staticFiles/cross.png" alt="No" draggable="false"></td>
+                      </tr>
+                    </tbody>
+                  
+                    <tbody>
+                      <tr>
+                          <th>Gold!</th>
+                          <td><img class="icon" src="/staticFiles/check.png" alt="Yes!" draggable="false"></td>
+                          <td><img class="icon" src="/staticFiles/check.png" alt="Yes!" draggable="false"></td>
+                          <td><img class="icon" src="/staticFiles/cross.png" alt="No" draggable="false"></td>
+                      </tr>
+                    </tbody>
+
+                    <tfoot>
+                      <tr>
+                          <th>Platinum!</th>
+                          <td><img class="icon" src="/staticFiles/check.png" alt="Yes!" draggable="false"></td>
+                          <td><img class="icon" src="/staticFiles/check.png" alt="Yes!" draggable="false"></td>
+                          <td><img class="icon" src="/staticFiles/check.png" alt="Yes!" draggable="false"></td>
+                      </tr>
+                    </tfoot>
+                  </table>
+                  <hr/>
+                  <form action="{{ url_for('account_home') }}" method="POST">
+		      {{ csrf_token() }}
+                      <h4>Select Plan:</h4>
+                      <div>
+                            <input type="radio" id="free" name="plan_selected" value="free" required>
+                            <label for="free">Free!</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="budget" name="plan_selected" value="budget" required>
+                            <label for="budget">Budget!</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="gold" name="plan_selected" value="gold" required>
+                            <label for="gold">Gold!</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="platinum" name="plan_selected" value="platinum" required>
+                            <label for="gold">Platinum!!</label>
+                        </div>
+                        <input type="submit" value="Pay Now!">
+                  </form>
+            </div>
+        </div>
+    <pre>
+        <a href="https://www.flaticon.com/free-icons/home" title="home icons">Home icons created by Freepik - Flaticon</a>
+        <a href="https://www.flaticon.com/free-icons/info" title="info icons">Info icons created by Roundicons - Flaticon</a>
+        <a href="https://www.flaticon.com/free-icons/login" title="login icons">Login icons created by Freepik - Flaticon</a>
+        <a href="https://www.flaticon.com/free-icons/tick" title="tick icons">Tick icons created by Roundicons - Flaticon</a>
+        <a href="https://www.flaticon.com/free-icons/cross" title="cross icons">Cross icons created by Roundicons - Flaticon</a>
+    </pre>
+    </body>
+</html>

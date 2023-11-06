@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login Page</title>
+    <link rel="stylesheet" href="/staticFiles/sitestyle.css">
+</head>
+  <body>
+    <div class="header">
+        <!-- All other pages on site, accessed via top toolbar -->
+        <nav>
+            <a href="{{ url_for('home_page') }}"><img src="/staticFiles/home-icon.png" alt="Home" draggable="false"></a>
+            <a href="{{ url_for('about_page') }}"><img src="/staticFiles/about-icon.png" alt="About" draggable="false"></a>
+            <a href="{{ url_for('login_page') }}"><img src="/staticFiles/login-icon.png" alt="Login" draggable="false"></a>
+        </nav>
+      <h2>Register Your Fantastic Account</h2>
+    </div>
+    <div class="color_frame">
+    <div class="text_box">
+        <!-- If there is a message, this appears above the form -->
+        {% if message%}
+            <h5 class="message">{{ message }}</h5>
+        {% endif %}
+        <!-- Form for account creation, used by Javascript at bottom -->
+        <form action="{{ url_for('register_page') }}" method="POST">
+	    {{ csrf_token() }}
+            <label for="username">Enter a Username:</label>
+            <input type="text" id="username" name="username" required>
+
+                <label id="requirement_head">Password must contain at least:</label>
+                <label id="min_length">12 characters </label>
+                <label id="symbol">1 symbol: !@#$%^&*(),.?:{}|</label>
+                <label id="number">1 number</label>
+                <label id="uppercase">1 uppercase letter</label>
+                <label class="last_requirement" id="lowercase">1 lowercase letter</label>
+
+            <label for="password">Enter a Password:</label>
+            <input type="password" id="password" name="password" required>
+            <label for="password">Password Again:</label>
+            <input type="password" id="confirmPassword" name="confirmPassword" oninput="doMatch();" required>
+            <input type="submit" id="submit" value="Register" disabled>
+          </form>
+        </div>
+    </div>
+        <script>
+
+            //Verifies that all requirements are met
+            //for each requirement text is turned green when met
+            //when requirements are all met submit button becomes available
+             var passwordInput = document.getElementById("password");
+             var minLengthLabel = document.getElementById("min_length");
+             var symbolLabel = document.getElementById("symbol");
+             var numberLabel = document.getElementById("number");
+             var uppercaseLabel = document.getElementById("uppercase");
+             var lowercaseLabel = document.getElementById("lowercase");
+
+             passwordInput.addEventListener("input", function() {
+                 var password = passwordInput.value;
+                 //uses a flag to verify all requirements are met
+                 var passwordRequirementsPassed = true;
+
+                 if (password.length >= 12) {
+                     minLengthLabel.classList.add("pass");
+                     passwordRequirementsPassed = true;
+                 } else {
+                     minLengthLabel.classList.remove("pass");
+                     passwordRequirementsPassed = false;
+                 }
+
+                 //ensures there is at least one symbol
+                 if (/[\!\@\#\$\%\^\&\*\(\)\,\.\?\:\{\}\|\;]/.test(password)) {
+                     symbolLabel.classList.add("pass");
+                     passwordRequirementsPassed = true;
+                 } else {
+                     symbolLabel.classList.remove("pass");
+                     passwordRequirementsPassed = false;
+                 }
+
+                 //ensures there is at least one number
+                if (/\d/.test(password)) {
+                    numberLabel.classList.add("pass");
+                    passwordRequirementsPassed = true;
+                } else {
+                    numberLabel.classList.remove("pass");
+                    passwordRequirementsPassed = false;
+                }
+
+                if (/[A-Z]/.test(password)) {
+                    uppercaseLabel.classList.add("pass");
+                    passwordRequirementsPassed = true;
+                } else {
+                    uppercaseLabel.classList.remove("pass");
+                    passwordRequirementsPassed = false;
+                }
+
+                if (/[a-z]/.test(password)) {
+                    lowercaseLabel.classList.add("pass");
+                    passwordRequirementsPassed = true;
+                } else {
+                    lowercaseLabel.classList.remove("pass");
+                    passwordRequirementsPassed = false;
+                }
+
+                var submit = document.getElementById("submit")
+                if (passwordRequirementsPassed) {
+                    submit.disabled = false;
+                }
+            });
+
+            //Function verifies both password inputs match
+            function doMatch()
+            {
+                const firstInput = document.getElementById("password");
+                const secondInput = document.getElementById("confirmPassword");
+
+                if(firstInput.value != secondInput.value)
+                {
+                    secondInput.setCustomValidity("The passwords do not match");
+                }
+                else
+                {
+                    secondInput.setCustomValidity("");
+                }
+            }  
+        </script>
+    <pre>
+        <a href="https://www.flaticon.com/free-icons/home" title="home icons">Home icons created by Freepik - Flaticon</a>
+        <a href="https://www.flaticon.com/free-icons/info" title="info icons">Info icons created by Roundicons - Flaticon</a>
+        <a href="https://www.flaticon.com/free-icons/login" title="login icons">Login icons created by Freepik - Flaticon</a>
+    </pre>
+    </body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Jake's Super Cool Website</title>
+    <link rel="stylesheet" href="/staticFiles/sitestyle.css">
+    </head>
+    <body>
+        <div class="header">
+            <!-- All other pages on site, accessed via top toolbar -->
+            <nav>
+                <a href="{{ url_for('home_page') }}"><img src="/staticFiles/home-icon.png" alt="Home" draggable="false"></a>
+                <a href="{{ url_for('about_page') }}"><img src="/staticFiles/about-icon.png" alt="About" draggable="false"></a>
+                <a href="{{ url_for('login_page') }}"><img src="/staticFiles/login-icon.png" alt="Login" draggable="false"></a>
+            </nav>
+            <h1 class="home_header">Welcome to Jake's Super Cool Website!</h1>
+            <!-- The date and time is accessed by datetime in main.py -->
+            <h3>Today's date is {{ date.strftime('%B %d, %Y') }}, and the time accessed was: {{ time }}</h3>
+        </div>
+        <div class="color_frame">
+            <div class="image_with_text">
+                <figure>
+                    <img src="/staticFiles/jake.png" alt="This was meant to be a cool picture">
+                    <figcaption>This is Jake, Drawn by AI</figcaption>
+                </figure>
+                <p>
+                    Jake was given an assignment to build a website about something he likes. 
+                    He thought a lot about what to make, and came to the conclusion that there is nothing he likes
+                    more than himself. So this is a website dedicated entirely to him, by him.
+                </p>
+            </div>
+        </div>
+        <div  class="header">
+            <h3>
+                This is My Dog
+            </h3>
+            <h5>
+                Click and drag!
+            </h5>
+        </div>
+        <!-- This is an ordered list of images, used by javascript at bottom of file -->
+            <ol class="imageBox" id="image_box" mouse-down="0">
+                <li><img class="dogPic" src="/staticFiles/molly1.png" alt="My dog" draggable="false"></li>
+                <li><img class="dogPic" src="/staticFiles/molly2.png" alt="My dog" draggable="false"></li>
+                <li><img class="dogPic" src="/staticFiles/molly3.png" alt="My dog" draggable="false"></li>
+                <li><img class="dogPic" src="/staticFiles/molly4.png" alt="My dog" draggable="false"></li>
+                <li><img class="dogPic" src="/staticFiles/molly5.png" alt="My dog" draggable="false"></li>
+              </ol>
+        <!-- Javascript that allows dog images to move -->
+        <script>
+            const imageBox = document.getElementById('image_box');
+            
+            imageBox.addEventListener('mousedown', (e) => {
+                imageBox.dataset.mouseDown = e.clientX;
+            });
+
+            window.onmousemove = e => {
+                if(imageBox.dataset.mouseDown === "0") return;
+                
+                const mouseDistance = parseFloat(imageBox.dataset.mouseDown) - e.clientX,
+                maxDistance = window.innerWidth/2;
+                let percentTransform = (mouseDistance/maxDistance)*-100;
+
+                if(percentTransform > 50)
+                {
+                    percentTransform = 50;
+                }
+                else if(percentTransform < -50)
+                {
+                    percentTransform = -50;
+                }
+
+                console.log("percentage: ", percentTransform);
+
+                imageBox.animate({
+                    transform: `translate(${percentTransform}%, 0%)`
+                }, {duration: 1200, fill: "forwards"});
+
+                //images move with the scrolling pane
+                for(const sale-item of imageBox.getElementsByClassName("sale-item")){
+                    const position = `${50 - percentTransform}% 50%`;
+                    sale-item.animate({
+                        objectPosition: position,
+                    }, {duration: 1200, fill: "forwards"});
+                }
+
+
+            }
+            window.addEventListener('mouseup', () => {
+                imageBox.dataset.mouseDown = 0;
+            });
+        </script>
+    <pre>
+        <a href="https://www.flaticon.com/free-icons/home" title="home icons">Home icons created by Freepik - Flaticon</a>
+        <a href="https://www.flaticon.com/free-icons/info" title="info icons">Info icons created by Roundicons - Flaticon</a>
+        <a href="https://www.flaticon.com/free-icons/login" title="login icons">Login icons created by Freepik - Flaticon</a>
+    </pre>
+    </body>
+</html>

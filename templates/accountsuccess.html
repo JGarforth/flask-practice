@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Account Creation Success</title>
+        <link rel="stylesheet" href="/staticFiles/sitestyle.css">
+    </head>
+    <body>
+        <br>
+        <br>
+        <div class="header">
+            <h3>Account creation successful!</h3>
+        </div>
+        <div class="text_box">
+            <form action="{{ url_for('success_page') }}" method="POST">
+		{{ csrf_token() }}
+                <input type="submit" value="Hooray!">
+            </form>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <title>Payment</title>
+    <link rel="stylesheet" href="/staticFiles/sitestyle.css">
+  </head>
+  <body>
+    <div class="header">
+        <!-- All other pages on site, accessed via top toolbar -->
+        <nav>
+            <a href="{{ url_for('home_page') }}"><img src="/staticFiles/home-icon.png" alt="Home" draggable="false"></a>
+            <a href="{{ url_for('about_page') }}"><img src="/staticFiles/about-icon.png" alt="About" draggable="false"></a>
+            <a href="{{ url_for('login_page') }}"><img src="/staticFiles/login-icon.png" alt="Login" draggable="false"></a>
+        </nav>
+      <h2>The Phenomenal Credit Card Entry Page!</h2>
+    </div>
+        <div class="text-box">
+            <h3>Enter Your Payment Information:</h3>
+            <form action="{{ url_for('enter_payment') }}" method="POST">
+		{{ csrf_token() }}
+                <div>
+                    <input type="text" size="45" placeholder="Card number" pattern="[0-9]{16}" required>
+                    <input type="text" size="15" placeholder="MM/DD" pattern="\d{2}/\d{2}" required>
+                    <input type="password" size="6" placeholder="CVC" pattern="[0-9]{3}" required>
+                </div>
+                <input type="text" placeholder="Street address" required>
+                <input type="text" placeholder="Street address line 2 (optional)">
+                <input type="text" placeholder="Country" required>
+                <div>
+                    <input type="text" size="22" placeholder="City" required>
+                    <input type="text" size="22" placeholder="State" required>
+                    <input type="text" size="22" placeholder="Zip" pattern="[0-9]{5}" required>
+                </div>
+                <input type="submit" value="Submit and Pay!">
+            </form>
+        </div>
+    <pre>
+        <a href="https://www.flaticon.com/free-icons/home" title="home icons">Home icons created by Freepik - Flaticon</a>
+        <a href="https://www.flaticon.com/free-icons/info" title="info icons">Info icons created by Roundicons - Flaticon</a>
+        <a href="https://www.flaticon.com/free-icons/login" title="login icons">Login icons created by Freepik - Flaticon</a>
+    </pre>
+  </body>
+</html>

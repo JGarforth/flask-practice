@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Secret Page</title>
+        <link rel="stylesheet" href="/staticFiles/sitestyle.css">
+      </head>
+      <body>
+        <div class="header">
+            <!-- All other pages on site, accessed via top toolbar -->
+            <nav>
+                <a href="{{ url_for('home_page') }}"><img src="/staticFiles/home-icon.png" alt="Home" draggable="false"></a>
+                <a href="{{ url_for('about_page') }}"><img src="/staticFiles/about-icon.png" alt="About" draggable="false"></a>
+                <a href="{{ url_for('login_page') }}"><img src="/staticFiles/login-icon.png" alt="Login" draggable="false"></a>
+            </nav>
+          <h3>We apologize for the inconvenience...</h3>
+        </div>
+        <div class="centered">
+            <img src="/staticFiles/construction-icon.png" alt="under construction" draggable="false">
+            <h5>The secret page is still under construction</h5>
+        </div>
+        <pre>
+            <a href="https://www.flaticon.com/free-icons/home" title="home icons">Home icons created by Freepik - Flaticon</a>
+            <a href="https://www.flaticon.com/free-icons/info" title="info icons">Info icons created by Roundicons - Flaticon</a>
+            <a href="https://www.flaticon.com/free-icons/login" title="login icons">Login icons created by Freepik - Flaticon</a>
+            <a href="https://www.flaticon.com/free-icons/road-work" title="road-work icons">Road-work icons created by juicy_fish - Flaticon</a>
+        </pre>
+        </body>
+</html>

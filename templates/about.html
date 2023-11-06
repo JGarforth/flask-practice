@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Jake's Super Cool About Page</title>
+        <link rel="stylesheet" href="/staticFiles/sitestyle.css">
+    </head>
+    <body>
+        <div class="header">
+            <!-- All other pages on site, accessed via top toolbar -->
+            <nav>
+                <a href="{{ url_for('home_page') }}"><img src="/staticFiles/home-icon.png" alt="Home" draggable="false"></a>
+                <a href="{{ url_for('about_page') }}"><img src="/staticFiles/about-icon.png" alt="About" draggable="false"></a>
+                <a href="{{ url_for('login_page') }}"><img src="/staticFiles/login-icon.png" alt="Login" draggable="false"></a>
+            </nav>
+            <h2>Jake's Super Cool About Page!</h2>
+        </div>
+        <div class="color_frame">
+            <div class="text_box">
+            <p>
+                Jake is a 21 year old who lives in New York City. He works at Target<br>
+                and goes to the University of Maryland Global Campus for computer science.<br>
+                This website was an assignment for class. This is his favorite poem: <br>
+                <br>
+            </p>
+            <p class="poem">There once was a young soldier caller Edsar<br>
+                Who was always found in bed sir<br>
+                One day at one<br>
+                They fired the gun<br>
+                And Ed sir in bed sir was dead sir<br>
+                <span>by Spike Milligan</span>
+            </p>
+            <p>
+                <br>
+                With this poem he managed to get in plenty of trouble on poems day in<br>
+                elementary school.
+            </p>
+            <h4>
+                Here are a few more of his favorite things: 
+            </h4>
+            <ul>
+                <!-- An unordered list of links that show Jake's favorite things -->
+                <li><a href="https://www.blinkfitness.com/">Working Out</a></li>
+                <li><a href="https://www.khanacademy.org/math/ap-calculus-bc">Math</a></li>
+                <li><a href="https://en.wikipedia.org/wiki/The_Simpsons">The Simpsons</a></li>
+                <li><a href="https://time.com/5407072/why-beer-is-most-popular-drink-world/">Beer</a></li>
+            </ul>
+        </div>
+        </div>
+        <div class="text_box">
+            <!-- Uses mailto in order to make an email to Jake -->
+            <a href="mailto:jgarforth@student.umgc.edu?subject=Hello%20From%20Your%20Website&body=Hello%20Jake!">Contact Jake Here!</a>
+        </div>
+    <pre>
+        <a href="https://www.flaticon.com/free-icons/home" title="home icons">Home icons created by Freepik - Flaticon</a>
+        <a href="https://www.flaticon.com/free-icons/info" title="info icons">Info icons created by Roundicons - Flaticon</a>
+        <a href="https://www.flaticon.com/free-icons/login" title="login icons">Login icons created by Freepik - Flaticon</a>
+    </pre>
+    </body>
+</html>
